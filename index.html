@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EasyUMI | Heterogeneous Alignment UMI Data Collection</title>
+  <meta name="description" content="EasyUMI: Heterogeneous alignment UMI data collection with two mapping pipelines to SO101 robot arm." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f6f1;
+      --ink: #122117;
+      --card: #ffffff;
+      --accent: #0d8a47;
+      --accent-2: #0f5b83;
+      --line: #d8ddd1;
+      --muted: #5b665e;
+      --soft: #eaf3eb;
+      --warning: #fff6e6;
+      --radius: 18px;
+      --shadow: 0 14px 35px rgba(18, 33, 23, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 10%, #d8efdf 0%, transparent 24%),
+        radial-gradient(circle at 92% 16%, #dcecf5 0%, transparent 26%),
+        linear-gradient(180deg, #f6f7f3 0%, #eef1e7 100%);
+      font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+    }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 28px 20px 50px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px;
+      box-shadow: var(--shadow);
+    }
+
+    .lang-btn {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -50px;
+      top: -50px;
+      width: 190px;
+      height: 190px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(13, 138, 71, 0.2), rgba(15, 91, 131, 0.16));
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4.2vw, 44px);
+      line-height: 1.1;
+      max-width: 850px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 880px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .notice {
+      margin: 0 0 16px;
+      border: 1px dashed #e8cc95;
+      background: var(--warning);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: #7c5a12;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .mapping {
+      margin-top: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .mapping-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, rgba(13, 138, 71, 0.08), rgba(15, 91, 131, 0.08));
+    }
+
+    .mapping-head h2 {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .mapping-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 980px;
+    }
+
+    .grid {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .card-head {
+      padding: 10px 12px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcf8;
+    }
+
+    .idx {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex: none;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .video-wrap {
+      padding: 10px;
+      background: #f8faf6;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #000;
+      aspect-ratio: 16 / 9;
+      display: block;
+    }
+
+    .video-hint {
+      margin: 8px 2px 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .footer {
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .wrap { padding: 16px 12px 34px; }
+      .hero { padding: 16px; }
+      .mapping-head { padding: 14px; }
+      .grid { padding: 10px; gap: 10px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">EasyUMI</div>
+        <div class="subtitle" data-i18n="subtitle">Heterogeneous Alignment UMI Data Collection</div>
+      </div>
+      <div class="lang-switch" aria-label="Language switch">
+        <button class="lang-btn active" data-lang="zh" type="button">中文</button>
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1 data-i18n="heroTitle">EasyUMI：异构对齐 UMI 数采项目</h1>
+      <p data-i18n="heroDesc">本项目聚焦异构映射与数据采集。我们展示两类从人手动作到 SO101 机械臂动作的映射流程，覆盖采集设备、位姿估计、坐标变换、仿真验证、真机验证以及 LeRobot 可视化视频结果。</p>
+      <div class="meta">
+        <div class="pill" data-i18n="tag1">目标平台：SO101</div>
+        <div class="pill" data-i18n="tag2">采集设备：UMI 夹抓 / iPhone Pro</div>
+        <div class="pill" data-i18n="tag3">输出：高精度位姿与映射视频</div>
+      </div>
+    </section>
+
+    <div class="notice" data-i18n="notice">提示：请将下方每个视频卡片中的 src 替换为你自己的视频路径。推荐在仓库中建立 assets/videos 目录并使用相对路径。</div>
+
+    <section class="mapping">
+      <div class="mapping-head">
+        <h2 data-i18n="map1Title">映射类型 A：UMI 夹抓 + iPhone Pro 到 SO101</h2>
+        <p data-i18n="map1Desc">通过 UMI 夹抓与 iPhone Pro 获取操作数据，进行异构对齐后，将动作和位姿信息映射到 SO101 机械臂执行链路。</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-head"><span class="idx">1</span><h3 class="card-title" data-i18n="a1">数据采集设备与介绍</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/a1.jpg">
+              <source src="assets/videos/typeA_01_device.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><span class="idx">2</span><h3 class="card-title" data-i18n="a2">计算得到的精确位姿展示</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/a2.jpg">
+              <source src="assets/videos/typeA_02_precise_pose.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><span class="idx">3</span><h3 class="card-title" data-i18n="a3">坐标系转换后的位姿</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/a3.jpg">
+              <source src="assets/videos/typeA_03_frame_transform.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><span class="idx">4</span><h3 class="card-title" data-i18n="a4">仿真环境下机械臂移动视频</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/a4.jpg">
+              <source src="assets/videos/typeA_04_sim.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><span class="idx">5</span><h3 class="card-title" data-i18n="a5">真机移动视频</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/a5.jpg">
+              <source src="assets/videos/typeA_05_real_robot.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><span class="idx">6</span><h3 class="card-title" data-i18n="a6">LeRobot 数据可视化视频</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/a6.jpg">
+              <source src="assets/videos/typeA_06_lerobot_vis.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="mapping">
+      <div class="mapping-head">
+        <h2 data-i18n="map2Title">映射类型 B：胸口支架 iPhone Pro 手部视频到 SO101</h2>
+        <p data-i18n="map2Desc">胸口相机支架上的 iPhone Pro 采集手部视频，先进行手部关键点识别，再通过一系列位姿和坐标计算映射到 SO101 机械臂。</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-head"><span class="idx">1</span><h3 class="card-title" data-i18n="b1">数据采集设备与介绍</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/b1.jpg">
+              <source src="assets/videos/typeB_01_device.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><span class="idx">2</span><h3 class="card-title" data-i18n="b2">计算得到的精确位姿展示</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/b2.jpg">
+              <source src="assets/videos/typeB_02_precise_pose.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><span class="idx">3</span><h3 class="card-title" data-i18n="b3">坐标系转换后的位姿</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/b3.jpg">
+              <source src="assets/videos/typeB_03_frame_transform.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><span class="idx">4</span><h3 class="card-title" data-i18n="b4">仿真环境下机械臂移动视频</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/b4.jpg">
+              <source src="assets/videos/typeB_04_sim.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><span class="idx">5</span><h3 class="card-title" data-i18n="b5">真机移动视频</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/b5.jpg">
+              <source src="assets/videos/typeB_05_real_robot.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><span class="idx">6</span><h3 class="card-title" data-i18n="b6">LeRobot 数据可视化视频</h3></div>
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="assets/posters/b6.jpg">
+              <source src="assets/videos/typeB_06_lerobot_vis.mp4" type="video/mp4" />
+            </video>
+            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span data-i18n="footerLeft">EasyUMI Project Page</span>
+      <span data-i18n="footerRight">Built for GitHub Pages with bilingual switching</span>
+    </footer>
+  </div>
+
+  <script>
+    const i18n = {
+      zh: {
+        subtitle: "异构对齐 UMI 数采",
+        heroTitle: "EasyUMI：异构对齐 UMI 数采项目",
+        heroDesc: "本项目聚焦异构映射与数据采集。我们展示两类从人手动作到 SO101 机械臂动作的映射流程，覆盖采集设备、位姿估计、坐标变换、仿真验证、真机验证以及 LeRobot 可视化视频结果。",
+        tag1: "目标平台：SO101",
+        tag2: "采集设备：UMI 夹抓 / iPhone Pro",
+        tag3: "输出：高精度位姿与映射视频",
+        notice: "提示：请将下方每个视频卡片中的 src 替换为你自己的视频路径。推荐在仓库中建立 assets/videos 目录并使用相对路径。",
+        map1Title: "映射类型 A：UMI 夹抓 + iPhone Pro 到 SO101",
+        map1Desc: "通过 UMI 夹抓与 iPhone Pro 获取操作数据，进行异构对齐后，将动作和位姿信息映射到 SO101 机械臂执行链路。",
+        map2Title: "映射类型 B：胸口支架 iPhone Pro 手部视频到 SO101",
+        map2Desc: "胸口相机支架上的 iPhone Pro 采集手部视频，先进行手部关键点识别，再通过一系列位姿和坐标计算映射到 SO101 机械臂。",
+        a1: "数据采集设备与介绍",
+        a2: "计算得到的精确位姿展示",
+        a3: "坐标系转换后的位姿",
+        a4: "仿真环境下机械臂移动视频",
+        a5: "真机移动视频",
+        a6: "LeRobot 数据可视化视频",
+        b1: "数据采集设备与介绍",
+        b2: "计算得到的精确位姿展示",
+        b3: "坐标系转换后的位姿",
+        b4: "仿真环境下机械臂移动视频",
+        b5: "真机移动视频",
+        b6: "LeRobot 数据可视化视频",
+        hintReplace: "请替换为你的视频路径",
+        footerLeft: "EasyUMI 项目主页",
+        footerRight: "支持中英文切换，可直接用于 GitHub Pages"
+      },
+      en: {
+        subtitle: "Heterogeneous Alignment UMI Data Collection",
+        heroTitle: "EasyUMI: Heterogeneous Alignment UMI Data Collection",
+        heroDesc: "This project focuses on heterogeneous mapping and data collection. We present two mapping pipelines from human hand motion to the SO101 robot arm, including data acquisition setup, precise pose estimation, coordinate transformation, simulation replay, real robot execution, and LeRobot visualization videos.",
+        tag1: "Target Platform: SO101",
+        tag2: "Acquisition: UMI Gripper / iPhone Pro",
+        tag3: "Output: Accurate Pose and Mapping Videos",
+        notice: "Note: Replace each video src below with your own files. It is recommended to create an assets/videos folder and use relative paths.",
+        map1Title: "Mapping Type A: UMI Gripper + iPhone Pro to SO101",
+        map1Desc: "Data captured by the UMI gripper and iPhone Pro is heterogeneously aligned and mapped into the SO101 robot arm motion chain.",
+        map2Title: "Mapping Type B: Chest-Mounted iPhone Pro Hand Video to SO101",
+        map2Desc: "Hand videos from a chest-mounted iPhone Pro are processed with hand keypoint detection, then transformed through pose and coordinate computations to drive SO101.",
+        a1: "Data Acquisition Device and Overview",
+        a2: "Computed Accurate Pose Visualization",
+        a3: "Pose After Coordinate Transformation",
+        a4: "Robot Motion in Simulation",
+        a5: "Robot Motion on Real Hardware",
+        a6: "LeRobot Data Visualization Video",
+        b1: "Data Acquisition Device and Overview",
+        b2: "Computed Accurate Pose Visualization",
+        b3: "Pose After Coordinate Transformation",
+        b4: "Robot Motion in Simulation",
+        b5: "Robot Motion on Real Hardware",
+        b6: "LeRobot Data Visualization Video",
+        hintReplace: "Replace with your video path",
+        footerLeft: "EasyUMI Project Page",
+        footerRight: "Built for GitHub Pages with bilingual switching"
+      }
+    };
+
+    const langButtons = document.querySelectorAll('.lang-btn');
+
+    function setLang(lang) {
+      const dict = i18n[lang] || i18n.zh;
+      document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+      langButtons.forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      localStorage.setItem('easyumi_lang', lang);
+    }
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+
+    setLang(localStorage.getItem('easyumi_lang') || 'zh');
+  </script>
+</body>
+</html>
