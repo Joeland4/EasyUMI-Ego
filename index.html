@@ -244,8 +244,12 @@
       border-radius: 10px;
       border: 1px solid var(--line);
       background: #000;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 1 / 1;
       display: block;
+    }
+
+    .card.wide-video video {
+      aspect-ratio: 16 / 9;
     }
 
     .video-hint {
@@ -253,6 +257,10 @@
       color: var(--muted);
       font-size: 12px;
       line-height: 1.4;
+    }
+
+    .video-hint.hidden {
+      display: none;
     }
 
     .footer {
@@ -321,7 +329,7 @@
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">2</span><h3 class="card-title" data-i18n="a2">计算得到的精确位姿展示</h3></div>
+          <div class="card-head"><span class="idx">2</span><h3 class="card-title" data-i18n="a2">位姿展示（含坐标系转换）</h3></div>
           <div class="video-wrap">
             <video controls preload="metadata" poster="assets/posters/a2.jpg">
               <source src="assets/videos/typeA_02_precise_pose.mp4" type="video/mp4" />
@@ -330,16 +338,7 @@
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">3</span><h3 class="card-title" data-i18n="a3">坐标系转换后的位姿</h3></div>
-          <div class="video-wrap">
-            <video controls preload="metadata" poster="assets/posters/a3.jpg">
-              <source src="assets/videos/typeA_03_frame_transform.mp4" type="video/mp4" />
-            </video>
-            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="card-head"><span class="idx">4</span><h3 class="card-title" data-i18n="a4">仿真环境下机械臂移动视频</h3></div>
+          <div class="card-head"><span class="idx">3</span><h3 class="card-title" data-i18n="a4">仿真环境下机械臂移动视频</h3></div>
           <div class="video-wrap">
             <video controls preload="metadata" poster="assets/posters/a4.jpg">
               <source src="assets/videos/typeA_04_sim.mp4" type="video/mp4" />
@@ -348,7 +347,7 @@
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">5</span><h3 class="card-title" data-i18n="a5">真机移动视频</h3></div>
+          <div class="card-head"><span class="idx">4</span><h3 class="card-title" data-i18n="a5">真机移动视频</h3></div>
           <div class="video-wrap">
             <video controls preload="metadata" poster="assets/posters/a5.jpg">
               <source src="assets/videos/typeA_05_real_robot.mp4" type="video/mp4" />
@@ -356,8 +355,8 @@
             <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
           </div>
         </article>
-        <article class="card">
-          <div class="card-head"><span class="idx">6</span><h3 class="card-title" data-i18n="a6">LeRobot 数据可视化视频</h3></div>
+        <article class="card wide-video">
+          <div class="card-head"><span class="idx">5</span><h3 class="card-title" data-i18n="a6">LeRobot 数据可视化视频</h3></div>
           <div class="video-wrap">
             <video controls preload="metadata" poster="assets/posters/a6.jpg">
               <source src="assets/videos/typeA_06_lerobot_vis.mp4" type="video/mp4" />
@@ -384,7 +383,7 @@
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">2</span><h3 class="card-title" data-i18n="b2">计算得到的精确位姿展示</h3></div>
+          <div class="card-head"><span class="idx">2</span><h3 class="card-title" data-i18n="b2">位姿展示（含坐标系转换）</h3></div>
           <div class="video-wrap">
             <video controls preload="metadata" poster="assets/posters/b2.jpg">
               <source src="assets/videos/typeB_02_precise_pose.mp4" type="video/mp4" />
@@ -393,16 +392,7 @@
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">3</span><h3 class="card-title" data-i18n="b3">坐标系转换后的位姿</h3></div>
-          <div class="video-wrap">
-            <video controls preload="metadata" poster="assets/posters/b3.jpg">
-              <source src="assets/videos/typeB_03_frame_transform.mp4" type="video/mp4" />
-            </video>
-            <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="card-head"><span class="idx">4</span><h3 class="card-title" data-i18n="b4">仿真环境下机械臂移动视频</h3></div>
+          <div class="card-head"><span class="idx">3</span><h3 class="card-title" data-i18n="b4">仿真环境下机械臂移动视频</h3></div>
           <div class="video-wrap">
             <video controls preload="metadata" poster="assets/posters/b4.jpg">
               <source src="assets/videos/typeB_04_sim.mp4" type="video/mp4" />
@@ -411,7 +401,7 @@
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">5</span><h3 class="card-title" data-i18n="b5">真机移动视频</h3></div>
+          <div class="card-head"><span class="idx">4</span><h3 class="card-title" data-i18n="b5">真机移动视频</h3></div>
           <div class="video-wrap">
             <video controls preload="metadata" poster="assets/posters/b5.jpg">
               <source src="assets/videos/typeB_05_real_robot.mp4" type="video/mp4" />
@@ -419,8 +409,8 @@
             <p class="video-hint" data-i18n="hintReplace">请替换为你的视频路径</p>
           </div>
         </article>
-        <article class="card">
-          <div class="card-head"><span class="idx">6</span><h3 class="card-title" data-i18n="b6">LeRobot 数据可视化视频</h3></div>
+        <article class="card wide-video">
+          <div class="card-head"><span class="idx">5</span><h3 class="card-title" data-i18n="b6">LeRobot 数据可视化视频</h3></div>
           <div class="video-wrap">
             <video controls preload="metadata" poster="assets/posters/b6.jpg">
               <source src="assets/videos/typeB_06_lerobot_vis.mp4" type="video/mp4" />
@@ -452,13 +442,13 @@
         map2Title: "映射类型 B：胸口支架 iPhone Pro 手部视频到 SO101",
         map2Desc: "胸口相机支架上的 iPhone Pro 采集手部视频，先进行手部关键点识别，再通过一系列位姿和坐标计算映射到 SO101 机械臂。",
         a1: "数据采集设备与介绍",
-        a2: "计算得到的精确位姿展示",
+        a2: "位姿展示（含坐标系转换）",
         a3: "坐标系转换后的位姿",
         a4: "仿真环境下机械臂移动视频",
         a5: "真机移动视频",
         a6: "LeRobot 数据可视化视频",
         b1: "数据采集设备与介绍",
-        b2: "计算得到的精确位姿展示",
+        b2: "位姿展示（含坐标系转换）",
         b3: "坐标系转换后的位姿",
         b4: "仿真环境下机械臂移动视频",
         b5: "真机移动视频",
@@ -480,13 +470,13 @@
         map2Title: "Mapping Type B: Chest-Mounted iPhone Pro Hand Video to SO101",
         map2Desc: "Hand videos from a chest-mounted iPhone Pro are processed with hand keypoint detection, then transformed through pose and coordinate computations to drive SO101.",
         a1: "Data Acquisition Device and Overview",
-        a2: "Computed Accurate Pose Visualization",
+        a2: "Pose Visualization (with Coordinate Transform)",
         a3: "Pose After Coordinate Transformation",
         a4: "Robot Motion in Simulation",
         a5: "Robot Motion on Real Hardware",
         a6: "LeRobot Data Visualization Video",
         b1: "Data Acquisition Device and Overview",
-        b2: "Computed Accurate Pose Visualization",
+        b2: "Pose Visualization (with Coordinate Transform)",
         b3: "Pose After Coordinate Transformation",
         b4: "Robot Motion in Simulation",
         b5: "Robot Motion on Real Hardware",
@@ -512,6 +502,21 @@
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
       localStorage.setItem('easyumi_lang', lang);
+      updateVideoHints();
+    }
+
+    function updateVideoHints() {
+      const placeholderPattern = /assets\/videos\/type[AB]_\d{2}_/i;
+      document.querySelectorAll('.video-wrap').forEach((wrap) => {
+        const source = wrap.querySelector('video source');
+        const hint = wrap.querySelector('.video-hint');
+        if (!source || !hint) {
+          return;
+        }
+        const src = source.getAttribute('src') || '';
+        const isPlaceholder = placeholderPattern.test(src);
+        hint.classList.toggle('hidden', !isPlaceholder);
+      });
     }
 
     langButtons.forEach((btn) => {
@@ -519,6 +524,7 @@
     });
 
     setLang(localStorage.getItem('easyumi_lang') || 'zh');
+    updateVideoHints();
   </script>
 </body>
 </html>
