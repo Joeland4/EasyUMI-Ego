@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -103,6 +103,74 @@
     .github-link:hover {
       transform: translateY(-1px);
       border-color: #b9c4b7;
+    }
+
+    button.github-link {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .qr-pop {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.42);
+    }
+
+    .qr-pop.is-open {
+      display: flex;
+    }
+
+    .qr-pop__panel {
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 24px 28px 26px;
+      text-align: center;
+      width: min(440px, calc(100vw - 32px));
+    }
+
+    .qr-pop__title {
+      margin: 0 0 16px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .qr-pop__img {
+      width: 360px;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #f8faf6;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .qr-pop__hint {
+      margin: 16px 0 18px;
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    .qr-pop__close {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 16px;
+      background: var(--card);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--ink);
     }
 
     .lang-btn {
@@ -309,56 +377,56 @@
       </div>
       <div class="top-actions">
         <a class="github-link" href="https://github.com/Joeland4/EasyUMI-Ego" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="github-link" href="Visualization/wechat.png" target="_blank" rel="noreferrer" data-i18n="wechatLink">微信二维码</a>
+        <button type="button" class="github-link" id="wechatOpen" data-i18n="wechatLink">WeChat QR</button>
         <div class="lang-switch" aria-label="Language switch">
-          <button class="lang-btn active" data-lang="zh" type="button">中文</button>
-          <button class="lang-btn" data-lang="en" type="button">EN</button>
+          <button class="lang-btn" data-lang="zh" type="button">中文</button>
+          <button class="lang-btn active" data-lang="en" type="button">EN</button>
         </div>
       </div>
     </header>
 
     <section class="hero">
-      <h1 data-i18n="heroTitle">EasyUMI-Ego：异构对齐 UMI 数采项目</h1>
-      <p data-i18n="heroDesc">本项目聚焦异构映射与数据采集。我们展示两类从人手动作到 SO101 机械臂动作的映射流程，覆盖采集设备、位姿估计、坐标变换、仿真验证、真机验证以及 LeRobot 可视化视频结果。</p>
+      <h1 data-i18n="heroTitle">EasyUMI-Ego: Heterogeneous Alignment UMI Data Collection</h1>
+      <p data-i18n="heroDesc">This project focuses on heterogeneous mapping and data collection. We present two mapping pipelines from human hand motion to the SOARM-101 embodiment, including data acquisition setup, precise pose estimation, coordinate transformation, simulation replay, real robot execution, and LeRobot visualization GIFs.</p>
       <div class="meta">
-        <div class="pill" data-i18n="tag1">目标平台：本体设备 SOARM-101</div>
-        <div class="pill" data-i18n="tag2">采集设备：UMI 夹抓 / iPhone Pro</div>
-        <div class="pill" data-i18n="tag3">输出：高精度位姿与映射视频</div>
+        <div class="pill" data-i18n="tag1">Target Platform: Embodiment SOARM-101</div>
+        <div class="pill" data-i18n="tag2">Acquisition: UMI Gripper / iPhone Pro</div>
+        <div class="pill" data-i18n="tag3">Output: Accurate Pose and Mapping Videos</div>
       </div>
     </section>
 
     <section class="mapping">
       <div class="mapping-head">
-        <h2 data-i18n="map1Title">映射类型 A：UMI 夹抓 + iPhone Pro 到 SO101</h2>
-        <p data-i18n="map1Desc">通过 UMI 夹抓与 iPhone Pro 获取操作数据，进行异构对齐后，将动作和位姿信息映射到 SO101 机械臂执行链路。</p>
+        <h2 data-i18n="map1Title">Mapping Type A: UMI Gripper + iPhone Pro to SO101</h2>
+        <p data-i18n="map1Desc">Data captured by the UMI gripper and iPhone Pro is heterogeneously aligned and mapped into the SO101 robot arm motion chain.</p>
       </div>
       <div class="grid">
         <article class="card">
-          <div class="card-head"><span class="idx">1</span><h3 class="card-title" data-i18n="a1">数据采集设备与介绍</h3></div>
+          <div class="card-head"><span class="idx">1</span><h3 class="card-title" data-i18n="a1">Data Acquisition Device and Overview</h3></div>
           <div class="video-wrap">
             <img class="media-gif" src="Visualization/UMIdevice.gif" alt="Type A - Device" loading="lazy" />
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">2</span><h3 class="card-title" data-i18n="a2">位姿展示（含坐标系转换）</h3></div>
+          <div class="card-head"><span class="idx">2</span><h3 class="card-title" data-i18n="a2">Pose Visualization (with Coordinate Transform)</h3></div>
           <div class="video-wrap">
             <img class="media-gif" src="Visualization/UMIpose.gif" alt="Type A - Pose and transform" loading="lazy" />
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">3</span><h3 class="card-title" data-i18n="a4">仿真环境下机械臂移动视频</h3></div>
+          <div class="card-head"><span class="idx">3</span><h3 class="card-title" data-i18n="a4">Robot Motion in Simulation</h3></div>
           <div class="video-wrap">
             <img class="media-gif" src="Visualization/UMIsimu.gif" alt="Type A - Simulation" loading="lazy" />
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">4</span><h3 class="card-title" data-i18n="a5">真机移动视频</h3></div>
+          <div class="card-head"><span class="idx">4</span><h3 class="card-title" data-i18n="a5">Robot Motion on Real Hardware</h3></div>
           <div class="video-wrap">
             <img class="media-gif" src="Visualization/UMIreal.gif" alt="Type A - Real robot" loading="lazy" />
           </div>
         </article>
         <article class="card wide-video full-span">
-          <div class="card-head"><span class="idx">5</span><h3 class="card-title" data-i18n="a6">LeRobot 数据可视化视频</h3></div>
+          <div class="card-head"><span class="idx">5</span><h3 class="card-title" data-i18n="a6">LeRobot Data Visualization Video</h3></div>
           <div class="video-wrap">
             <img class="media-gif" src="Visualization/UMIvisu.gif" alt="Type A - LeRobot visualization" loading="lazy" />
           </div>
@@ -368,47 +436,56 @@
 
     <section class="mapping">
       <div class="mapping-head">
-        <h2 data-i18n="map2Title">映射类型 B：胸口支架 iPhone Pro 手部视频到 SO101</h2>
-        <p data-i18n="map2Desc">胸口相机支架上的 iPhone Pro 采集手部视频，先进行手部关键点识别，再通过一系列位姿和坐标计算映射到 SO101 机械臂。</p>
+        <h2 data-i18n="map2Title">Mapping Type B: Chest-Mounted iPhone Pro Hand Video to SO101</h2>
+        <p data-i18n="map2Desc">Hand videos from a chest-mounted iPhone Pro are processed with hand keypoint detection, then transformed through pose and coordinate computations to drive SO101.</p>
       </div>
       <div class="grid">
         <article class="card">
-          <div class="card-head"><span class="idx">1</span><h3 class="card-title" data-i18n="b1">数据采集设备与介绍</h3></div>
+          <div class="card-head"><span class="idx">1</span><h3 class="card-title" data-i18n="b1">Data Acquisition Device and Overview</h3></div>
           <div class="video-wrap">
-            <img class="media-gif" src="Visualization/Egodevice.gif" alt="Type B - Ego device" loading="lazy" />
+            <img class="media-gif" src="Visualization/EGOdevice.gif" alt="Type B - Ego device" loading="lazy" />
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">2</span><h3 class="card-title" data-i18n="b2">位姿展示（含坐标系转换）</h3></div>
+          <div class="card-head"><span class="idx">2</span><h3 class="card-title" data-i18n="b2">Pose Visualization (with Coordinate Transform)</h3></div>
           <div class="video-wrap">
-            <img class="media-gif" src="Visualization/Egopose.gif" alt="Type B - Ego pose and transform" loading="lazy" />
+            <img class="media-gif" src="Visualization/EGOpose.gif" alt="Type B - Ego pose and transform" loading="lazy" />
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">3</span><h3 class="card-title" data-i18n="b4">仿真环境下机械臂移动视频</h3></div>
+          <div class="card-head"><span class="idx">3</span><h3 class="card-title" data-i18n="b4">Robot Motion in Simulation</h3></div>
           <div class="video-wrap">
-            <img class="media-gif" src="Visualization/Egosimu.gif" alt="Type B - Ego simulation" loading="lazy" />
+            <img class="media-gif" src="Visualization/EGOsimu.gif" alt="Type B - Ego simulation" loading="lazy" />
           </div>
         </article>
         <article class="card">
-          <div class="card-head"><span class="idx">4</span><h3 class="card-title" data-i18n="b5">真机移动视频</h3></div>
+          <div class="card-head"><span class="idx">4</span><h3 class="card-title" data-i18n="b5">Robot Motion on Real Hardware</h3></div>
           <div class="video-wrap">
-            <img class="media-gif" src="Visualization/Egoreal.gif" alt="Type B - Ego real robot" loading="lazy" />
+            <img class="media-gif" src="Visualization/EGOreal.gif" alt="Type B - Ego real robot" loading="lazy" />
           </div>
         </article>
         <article class="card wide-video full-span">
-          <div class="card-head"><span class="idx">5</span><h3 class="card-title" data-i18n="b6">LeRobot 数据可视化视频</h3></div>
+          <div class="card-head"><span class="idx">5</span><h3 class="card-title" data-i18n="b6">LeRobot Data Visualization Video</h3></div>
           <div class="video-wrap">
-            <img class="media-gif" src="Visualization/Egovisu.gif" alt="Type B - Ego LeRobot visualization" loading="lazy" />
+            <img class="media-gif" src="Visualization/EGOvisu.gif" alt="Type B - Ego LeRobot visualization" loading="lazy" />
           </div>
         </article>
       </div>
     </section>
 
     <footer class="footer">
-      <span data-i18n="footerLeft">EasyUMI Project Page</span>
+      <span data-i18n="footerLeft">EasyUMI-Ego Project Page</span>
       <span data-i18n="footerRight">Built for GitHub Pages with bilingual switching</span>
     </footer>
+  </div>
+
+  <div class="qr-pop" id="qrPop" aria-hidden="true">
+    <div class="qr-pop__panel" role="dialog" aria-modal="true" aria-labelledby="qrPopTitle">
+      <h2 class="qr-pop__title" id="qrPopTitle" data-i18n="qrModalTitle">WeChat</h2>
+      <img class="qr-pop__img" src="Visualization/wechat.png" alt="" width="360" height="360" decoding="async" />
+      <p class="qr-pop__hint" data-i18n="qrModalHint">Scan to connect</p>
+      <button type="button" class="qr-pop__close" id="qrPopClose" data-i18n="qrModalClose">Close</button>
+    </div>
   </div>
 
   <script>
@@ -438,6 +515,9 @@
         b6: "LeRobot 数据可视化视频",
         footerLeft: "EasyUMI-Ego 项目主页",
         wechatLink: "微信二维码",
+        qrModalTitle: "微信二维码",
+        qrModalHint: "扫码添加交流合作",
+        qrModalClose: "关闭",
         footerRight: "支持中英文切换，可直接用于 GitHub Pages"
       },
       en: {
@@ -465,14 +545,18 @@
         b6: "LeRobot Data Visualization Video",
         footerLeft: "EasyUMI-Ego Project Page",
         wechatLink: "WeChat QR",
+        qrModalTitle: "WeChat QR",
+        qrModalHint: "Scan to connect",
+        qrModalClose: "Close",
         footerRight: "Built for GitHub Pages with bilingual switching"
       }
     };
 
+    const LANG_KEY = 'easyumi_locale_v2';
     const langButtons = document.querySelectorAll('.lang-btn');
 
     function setLang(lang) {
-      const dict = i18n[lang] || i18n.zh;
+      const dict = i18n[lang] || i18n.en;
       document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
       document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.getAttribute('data-i18n');
@@ -483,14 +567,46 @@
       langButtons.forEach((btn) => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
-      localStorage.setItem('easyumi_lang', lang);
+      localStorage.setItem(LANG_KEY, lang);
     }
 
     langButtons.forEach((btn) => {
       btn.addEventListener('click', () => setLang(btn.dataset.lang));
     });
 
-    setLang(localStorage.getItem('easyumi_lang') || 'zh');
+    try {
+      localStorage.removeItem('easyumi_lang');
+    } catch (e) { /* ignore */ }
+
+    const saved = localStorage.getItem(LANG_KEY);
+    setLang(saved === 'zh' || saved === 'en' ? saved : 'en');
+
+    const qrPop = document.getElementById('qrPop');
+    const wechatOpen = document.getElementById('wechatOpen');
+    const qrPopClose = document.getElementById('qrPopClose');
+
+    function openQrPop() {
+      qrPop.classList.add('is-open');
+      qrPop.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeQrPop() {
+      qrPop.classList.remove('is-open');
+      qrPop.setAttribute('aria-hidden', 'true');
+    }
+
+    wechatOpen.addEventListener('click', openQrPop);
+    qrPopClose.addEventListener('click', closeQrPop);
+    qrPop.addEventListener('click', (e) => {
+      if (e.target === qrPop) {
+        closeQrPop();
+      }
+    });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && qrPop.classList.contains('is-open')) {
+        closeQrPop();
+      }
+    });
   </script>
 </body>
 </html>
