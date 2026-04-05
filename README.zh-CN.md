@@ -2,7 +2,7 @@
 
 [English](README.md) · **简体中文**
 
-**具身智能数据采集优化框架** — 面向 **UMI** 与 **EGO（第一人称 / 可穿戴）** 两类主流具身数据采集与对齐场景，配套静态项目主页（[`index.html`](./index.html) + [`Visualization/`](./Visualization/)）便于展示与分享。
+**具身智能数据采集优化框架** — 面向 **UMI** 与 **EGO（第一人称 / 可穿戴）** 两类主流具身数据采集与对齐场景，配套静态项目主页便于展示与分享。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Pages](https://img.shields.io/badge/GitHub-Pages-222?logo=github)](https://joeland4.github.io/EasyUMI-Ego/)
@@ -27,7 +27,7 @@
 
 优化后的数据可面向 **多种机械臂与训练框架** 使用，并强调 **标准化与可复现** 的工程形态。（具体实现与流程细节随版本迭代公开，当前 README 仅作项目级说明。）
 
-完整交互式排版与双语切换见 **[在线主页](https://joeland4.github.io/EasyUMI-Ego/)**（[`index.html`](./index.html)）。
+完整交互式排版与双语切换见 **[在线主页](https://joeland4.github.io/EasyUMI-Ego/)**。
 
 ---
 
@@ -37,7 +37,10 @@
 
 经典 **UMI** 落地往往要求 **硬件同构**：**示教端手持夹爪**与**机械臂末端夹爪**在几何与机构上尽量一致，以缩小 embodiment gap。这在工程上 **成本高、流程繁琐**：一旦更换 **不同厂商/结构的夹爪** 或定制末端，就需要重复对齐与改造，**难以快速适配多种夹爪类型**。
 
-- **UMI（Universal Manipulation Interface）** 官方介绍：[umi-gripper.github.io](https://umi-gripper.github.io/) · 论文：[arXiv:2402.10329](https://arxiv.org/abs/2402.10329) · 代码：[real-stanford/universal_manipulation_interface](https://github.com/real-stanford/universal_manipulation_interface)
+- **UMI（Universal Manipulation Interface）**
+  - 官方介绍：[umi-gripper.github.io](https://umi-gripper.github.io/)
+  - 论文：[arXiv:2402.10329](https://arxiv.org/abs/2402.10329)
+  - 代码：[real-stanford/universal_manipulation_interface](https://github.com/real-stanford/universal_manipulation_interface)
 
 **图示（原始 UMI 同构要求）：** **左图** 为 **手持 UMI 夹爪** 进行 **示教 / 数据采集**；**右图** 为 **机械臂末端夹爪** 做 **策略部署**，其结构需与示教端 **基本保持一致**，以保证 **同构**（几何、相机位姿与接触形态一致），从而降低 embodiment gap。
 
@@ -60,7 +63,13 @@
 
 ### 开源 Ego 数据、轨迹精度与 EgoMimic
 
-开源 **第一人称 / 可穿戴（Ego）** 数据便于堆规模，但在 **轨迹可视化** 与机器人坐标系对齐后，往往暴露 **几何精度有限** 的问题，**难以较准确地直接迁移到某一固定本体**。**EgoMimic**（[项目页](https://egomimic.github.io/) · [arXiv:2410.24221](https://arxiv.org/abs/2410.24221)）表明：仍需 **额外采集与对齐数据**，在 **Ego 手臂轨迹** 与 **单一目标机械臂** 之间做弥合，才能支撑可部署策略。
+开源 **第一人称 / 可穿戴（Ego）** 数据便于堆规模，但在 **轨迹可视化** 与机器人坐标系对齐后，往往暴露 **几何精度有限** 的问题，**难以较准确地直接迁移到某一固定本体**。
+
+- **EgoMimic**
+  - 项目页：[egomimic.github.io](https://egomimic.github.io/)
+  - 论文：[arXiv:2410.24221](https://arxiv.org/abs/2410.24221)
+
+**EgoMimic** 表明：仍需 **额外采集与对齐数据**，在 **Ego 手臂轨迹** 与 **单一目标机械臂** 之间做弥合，才能支撑可部署策略。
 
 <div align="center">
 <p align="center" style="max-width:560px;margin:12px auto 0;">
@@ -76,7 +85,7 @@
 
 ## 可视化演示
 
-> 以下为 **UMI（夹爪 + Phone）** 与 **Ego（胸口相机 + Phone）** 至 **SO101** 的示意动图，文件在 [`Visualization/`](./Visualization/)。仿真、LeRobot 可视化等更多片段见 [在线主页](https://joeland4.github.io/EasyUMI-Ego/)。
+> 以下为 **UMI（夹爪 + Phone）** 与 **Ego（胸口相机 + Phone）** 至 **SO101** 的示意动图。仿真、LeRobot 可视化等更多片段见 [在线主页](https://joeland4.github.io/EasyUMI-Ego/)。
 
 <p align="center"><strong>UMI → SO101</strong></p>
 
