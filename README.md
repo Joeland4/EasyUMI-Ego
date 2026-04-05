@@ -1,53 +1,53 @@
 # EasyUMI-Ego
 
-**具身智能数据采集优化框架** · *Embodied Intelligence Data Collection Optimization Framework*
+**English** · [简体中文](README.zh-CN.md)
+
+**Embodied intelligence data collection framework** — optimizing **UMI** and **egocentric (wearable)** capture–to–alignment workflows, with a static project page ([`index.html`](./index.html) + [`Visualization/`](./Visualization/)) for sharing.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Pages](https://img.shields.io/badge/GitHub-Pages-222?logo=github)](https://joeland4.github.io/EasyUMI-Ego/)
 
-面向 **UMI** 与 **EGO（第一人称 / 可穿戴）** 两类主流具身数据采集与对齐场景，配套静态项目主页（`index.html` + `Visualization/`）便于展示与分享。
+---
+
+## Contents
+
+- [Overview](#overview)
+- [Visual demos](#visual-demos)
+- [Focus areas](#focus-areas)
+- [Highlights](#highlights)
+- [Use cases](#use-cases)
+- [License](#license)
 
 ---
 
-## 目录
+## Overview
 
-- [项目简介](#项目简介)
-- [可视化演示](#可视化演示)
-- [核心方向](#核心方向)
-- [项目优势](#项目优势)
-- [适用场景](#适用场景)
-- [开源与许可](#开源与许可)
+This project improves two embodied data routes — **UMI** and **EGO** — across **cost**, **robot compatibility**, and **data usability**, so useful robot-learning data and tooling are reachable on **consumer-grade hardware**.
 
----
+Outputs aim to support **multiple robot arms and training stacks** with a **standardized, reproducible** engineering story. (Implementation details are released over time; this README stays at the project level.)
 
-## 项目简介
-
-本项目围绕 **UMI** 与 **EGO** 两条具身智能数据路线，在 **采集成本**、**机械臂适配** 与 **数据可用性** 等方向做系统化优化，便于在消费级硬件条件下获得可用于机器人学习的数据与工具链。
-
-优化后的数据可面向 **多种机械臂与训练框架** 使用，并强调 **标准化与可复现** 的工程形态。（具体实现与流程细节随版本迭代公开，当前 README 仅作项目级说明。）
-
-完整交互式排版与双语切换见 **[在线主页](https://joeland4.github.io/EasyUMI-Ego/)**（[`index.html`](./index.html)）。
+For the full interactive layout and language toggle, open the **[live site](https://joeland4.github.io/EasyUMI-Ego/)** or [`index.html`](./index.html).
 
 ---
 
-## 可视化演示
+## Visual demos
 
-> 以下为 **UMI（夹爪 + Phone → SO101）** 示意动图，文件在 [`Visualization/`](./Visualization/)。**Ego 路线**及其它片段见 [在线主页](https://joeland4.github.io/EasyUMI-Ego/)。为控制版面，此处以较小尺寸展示；需要看清细节可在仓库中打开原 GIF 或访问主页全屏查看。
+> **UMI (gripper + phone → SO101)** GIFs live under [`Visualization/`](./Visualization/). The **Ego** route and other clips are on the [live site](https://joeland4.github.io/EasyUMI-Ego/). Shown below at reduced size for readability; open the files or the site for full detail.
 
-<p align="center"><strong>UMI → SO101</strong>（预览条 · 每张宽约 200px）</p>
+<p align="center"><strong>UMI → SO101</strong></p>
 
 <table align="center">
   <tr>
     <td align="center" valign="top" width="33%">
-      <sub><b>采集</b></sub><br/>
+      <sub><b>Acquisition</b></sub><br/>
       <img src="./Visualization/UMIdevice.gif" width="200" alt="UMI acquisition"/>
     </td>
     <td align="center" valign="top" width="33%">
-      <sub><b>位姿 / 坐标</b></sub><br/>
+      <sub><b>Pose / coordinates</b></sub><br/>
       <img src="./Visualization/UMIpose.gif" width="200" alt="UMI pose"/>
     </td>
     <td align="center" valign="top" width="33%">
-      <sub><b>真机</b></sub><br/>
+      <sub><b>Real robot</b></sub><br/>
       <img src="./Visualization/UMIreal.gif" width="200" alt="UMI real robot"/>
     </td>
   </tr>
@@ -55,44 +55,44 @@
 
 ---
 
-## 核心方向
+## Focus areas
 
-| 方向 | 说明 |
-|------|------|
-| **双路线覆盖** | 同时关注 **UMI** 与 **EGO** 范式，支持异构对齐与统一呈现 |
-| **通用与迁移** | 弱化对单一机型或单一栈的绑定，便于扩展与复用 |
-| **成本与可及性** | 优先采用 **消费级设备** 与轻量工程路径，降低准入门槛 |
-| **生态对接** | 面向常见机器人学习与仿真工具链，便于后续接入训练与评估 |
-
----
-
-## 项目优势
-
-- **低成本**：无需依赖昂贵专用采集平台，适合科研与原型验证  
-- **高通用**：同一套思路可覆盖多类机械臂与任务设定  
-- **标准化**：强调数据与工程结构的规范性，便于协作与复现  
-- **易浏览**：提供静态主页与可视化素材，方便快速了解项目定位  
-- **易协作**：流程与代码组织面向团队扩展与社区反馈  
+| Area | Description |
+|------|-------------|
+| **Dual pipelines** | Covers **UMI** and **EGO** styles with heterogeneous alignment and a unified presentation |
+| **Generalization** | Less tied to one arm or one stack — easier to extend and reuse |
+| **Cost & access** | Favors **consumer devices** and lightweight engineering paths |
+| **Ecosystem fit** | Plays well with common robot-learning and simulation tooling |
 
 ---
 
-## 适用场景
+## Highlights
 
-- 具身智能 **模仿学习（Imitation Learning）**  
-- 机械臂 **策略训练** 与数据准备  
-- **LeRobot** 等开源机器人学习生态相关实验  
-- **低成本、规模化** 机器人数据采集与试点  
-- 多机型 **数据迁移与泛化** 方向的探索  
-
----
-
-## 开源与许可
-
-本项目 **完全开源**，旨在降低具身智能数据采集与实验门槛，推动机器人学习相关研究与工程应用。
-
-- 许可证：**[MIT License](./LICENSE)**  
-- 欢迎 Issue / PR 交流与改进建议  
+- **Low cost** — no reliance on expensive bespoke capture rigs; good for research and prototypes  
+- **Broad applicability** — one mindset can cover many arms and task setups  
+- **Standardization** — clear structure for collaboration and reproduction  
+- **Easy to skim** — static page + visuals for quick orientation  
+- **Collaboration-friendly** — layout and code organized for teams and community input  
 
 ---
 
-**EasyUMI-Ego** — 异构对齐 UMI & Ego-centric 数据采集与展示。
+## Use cases
+
+- Embodied **imitation learning**  
+- Manipulator **policy training** and data prep  
+- Experiments in open stacks such as **LeRobot**  
+- **Low-cost, larger-scale** robot data pilots  
+- **Cross-arm transfer and generalization** explorations  
+
+---
+
+## License
+
+Fully **open source** — to lower the barrier to embodied data collection and robot-learning work.
+
+- **License:** [MIT License](./LICENSE)  
+- Issues and PRs welcome  
+
+---
+
+**EasyUMI-Ego** — heterogeneous alignment for UMI & egocentric capture and presentation.
