@@ -36,19 +36,19 @@ For the full interactive layout and language toggle, open the **[live site](http
 
 <p align="center"><strong>UMI → SO101</strong></p>
 
-<table align="center">
+<table align="center" style="width:100%;max-width:720px;table-layout:fixed;border-collapse:separate;border-spacing:10px;">
   <tr>
-    <td align="center" valign="top" width="33%">
-      <sub><b>Acquisition</b></sub><br/>
-      <img src="./Visualization/UMIdevice.gif" width="200" alt="UMI acquisition"/>
+    <td style="width:33.33%;vertical-align:top;text-align:center;padding:0;">
+      <sub><b>Acquisition</b></sub><br/><br/>
+      <img src="./Visualization/UMIdevice.gif" alt="UMI acquisition" style="width:100%;height:200px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
     </td>
-    <td align="center" valign="top" width="33%">
-      <sub><b>Pose / coordinates</b></sub><br/>
-      <img src="./Visualization/UMIpose.gif" width="200" alt="UMI pose"/>
+    <td style="width:33.33%;vertical-align:top;text-align:center;padding:0;">
+      <sub><b>Pose / coordinates</b></sub><br/><br/>
+      <img src="./Visualization/UMIpose.gif" alt="UMI pose" style="width:100%;height:200px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
     </td>
-    <td align="center" valign="top" width="33%">
-      <sub><b>Real robot</b></sub><br/>
-      <img src="./Visualization/UMIreal.gif" width="200" alt="UMI real robot"/>
+    <td style="width:33.33%;vertical-align:top;text-align:center;padding:0;">
+      <sub><b>Real robot</b></sub><br/><br/>
+      <img src="./Visualization/UMIreal.gif" alt="UMI real robot" style="width:100%;height:200px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
     </td>
   </tr>
 </table>
