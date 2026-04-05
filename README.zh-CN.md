@@ -32,26 +32,73 @@
 
 ## 可视化演示
 
-> 以下为 **UMI（夹爪 + Phone → SO101）** 示意动图，文件在 [`Visualization/`](./Visualization/)。**Ego 路线**及其它片段见 [在线主页](https://joeland4.github.io/EasyUMI-Ego/)。为控制版面，此处以较小尺寸展示；需要看清细节可在仓库中打开原 GIF 或访问主页全屏查看。
+> 以下为 **UMI（夹爪 + Phone）** 与 **Ego（胸口相机 + Phone）** 至 **SO101** 的示意动图，文件在 [`Visualization/`](./Visualization/)。仿真、LeRobot 可视化等更多片段见 [在线主页](https://joeland4.github.io/EasyUMI-Ego/)。
 
 <p align="center"><strong>UMI → SO101</strong></p>
 
-<table align="center" style="width:100%;max-width:720px;table-layout:fixed;border-collapse:separate;border-spacing:10px;">
-  <tr>
-    <td style="width:33.33%;vertical-align:top;text-align:center;padding:0;">
-      <sub><b>采集</b></sub><br/><br/>
-      <img src="./Visualization/UMIdevice.gif" alt="UMI acquisition" style="width:100%;height:200px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
-    </td>
-    <td style="width:33.33%;vertical-align:top;text-align:center;padding:0;">
-      <sub><b>位姿 / 坐标</b></sub><br/><br/>
-      <img src="./Visualization/UMIpose.gif" alt="UMI pose" style="width:100%;height:200px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
-    </td>
-    <td style="width:33.33%;vertical-align:top;text-align:center;padding:0;">
-      <sub><b>真机</b></sub><br/><br/>
-      <img src="./Visualization/UMIreal.gif" alt="UMI real robot" style="width:100%;height:200px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
-    </td>
-  </tr>
+<div align="center">
+<table align="center" style="width:100%;max-width:520px;margin-left:auto;margin-right:auto;border-collapse:separate;border-spacing:0 16px;">
+  <tbody>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>采集</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/UMIdevice.gif" alt="UMI acquisition" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>位姿 / 坐标</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/UMIpose.gif" alt="UMI pose" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>真机</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/UMIreal.gif" alt="UMI real robot" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+  </tbody>
 </table>
+</div>
+
+<p align="center"><strong>Ego → SO101</strong></p>
+
+<div align="center">
+<table align="center" style="width:100%;max-width:520px;margin-left:auto;margin-right:auto;border-collapse:separate;border-spacing:0 16px;">
+  <tbody>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>采集</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/EGOdevice.gif" alt="Ego acquisition" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>位姿 / 坐标</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/EGOpose.gif" alt="Ego pose" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>真机</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/EGOreal.gif" alt="Ego real robot" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 ---
 
