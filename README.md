@@ -2,7 +2,7 @@
 
 **English** · [简体中文](README.zh-CN.md)
 
-**Embodied intelligence data collection framework** — optimizing **UMI** and **egocentric (wearable)** capture–to–alignment workflows, with a static project page ([`index.html`](./index.html) + [`Visualization/`](./Visualization/)) for sharing.
+**Embodied intelligence data collection framework** — optimizing **UMI** and **egocentric (wearable)** capture–to–alignment workflows, with a static project page for sharing.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Pages](https://img.shields.io/badge/GitHub-Pages-222?logo=github)](https://joeland4.github.io/EasyUMI-Ego/)
@@ -27,7 +27,7 @@ This project improves two embodied data routes — **UMI** and **EGO** — acros
 
 Outputs aim to support **multiple robot arms and training stacks** with a **standardized, reproducible** engineering story. (Implementation details are released over time; this README stays at the project level.)
 
-For the full interactive layout and language toggle, open the **[live site](https://joeland4.github.io/EasyUMI-Ego/)** or [`index.html`](./index.html).
+For the full interactive layout and language toggle, open the **[live site](https://joeland4.github.io/EasyUMI-Ego/)**.
 
 ---
 
@@ -37,7 +37,10 @@ For the full interactive layout and language toggle, open the **[live site](http
 
 Many **UMI-style** deployments assume **homogeneous hardware**: the **robot gripper** should closely match the **handheld UMI gripper** used during teaching. That reduces the embodiment gap but is **burdensome** in practice—labs with **different jaw geometries**, vendors, or custom tools must repeat mechanical alignment work, which **blocks quick reuse across grippers**.
 
-- **UMI (Universal Manipulation Interface)** — official site: [umi-gripper.github.io](https://umi-gripper.github.io/) · paper: [arXiv:2402.10329](https://arxiv.org/abs/2402.10329) · code: [real-stanford/universal_manipulation_interface](https://github.com/real-stanford/universal_manipulation_interface)
+- **UMI (Universal Manipulation Interface)**
+  - Official site: [umi-gripper.github.io](https://umi-gripper.github.io/)
+  - Paper: [arXiv:2402.10329](https://arxiv.org/abs/2402.10329)
+  - Code: [real-stanford/universal_manipulation_interface](https://github.com/real-stanford/universal_manipulation_interface)
 
 **Figure — original UMI homogeneity:** **Left:** handheld UMI gripper used for **in-the-wild teaching / capture**. **Right:** robot-mounted gripper for **policy rollout**—engineered to **match the teaching hardware** so the pipeline stays **isomorphic** (same geometry, camera rig, and contact behavior).
 
@@ -60,7 +63,13 @@ Many **UMI-style** deployments assume **homogeneous hardware**: the **robot grip
 
 ### Egocentric open data, trajectory quality, and EgoMimic
 
-Open **ego-centric** human datasets are attractive for scale, yet **trajectory visualization** against a fixed robot frame often reveals **limited geometric precision**; **faithful migration to a specific embodiment** therefore remains hard without extra bridging signals. **EgoMimic** ([project site](https://egomimic.github.io/) · [arXiv:2410.24221](https://arxiv.org/abs/2410.24221)) shows that **additional collected data**—aligning **ego arm motion** with a **single target manipulator**—is still needed to close the gap between wearable human demos and deployable policies.
+Open **ego-centric** human datasets are attractive for scale, yet **trajectory visualization** against a fixed robot frame often reveals **limited geometric precision**; **faithful migration to a specific embodiment** therefore remains hard without extra bridging signals.
+
+- **EgoMimic**
+  - Project site: [egomimic.github.io](https://egomimic.github.io/)
+  - Paper: [arXiv:2410.24221](https://arxiv.org/abs/2410.24221)
+
+**EgoMimic** shows that **additional collected data**—aligning **ego arm motion** with a **single target manipulator**—is still needed to close the gap between wearable human demos and deployable policies.
 
 <div align="center">
 <p align="center" style="max-width:560px;margin:12px auto 0;">
@@ -76,7 +85,7 @@ Recent **Gen-1**-class embodied foundation models highlight a strong **scaling l
 
 ## Visual demos
 
-> **UMI** and **Ego (chest-mounted phone → SO101)** preview GIFs are in [`Visualization/`](./Visualization/). More clips (simulation, LeRobot vis, etc.) are on the [live site](https://joeland4.github.io/EasyUMI-Ego/).
+> Preview **UMI** and **Ego (chest-mounted phone → SO101)** GIFs below. For simulation, LeRobot visualization, and more clips, see the [live site](https://joeland4.github.io/EasyUMI-Ego/).
 
 <p align="center"><strong>UMI → SO101</strong></p>
 
