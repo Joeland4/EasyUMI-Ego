@@ -32,26 +32,73 @@ For the full interactive layout and language toggle, open the **[live site](http
 
 ## Visual demos
 
-> **UMI (gripper + phone → SO101)** GIFs live under [`Visualization/`](./Visualization/). The **Ego** route and other clips are on the [live site](https://joeland4.github.io/EasyUMI-Ego/). Shown below at reduced size for readability; open the files or the site for full detail.
+> **UMI** and **Ego (chest-mounted phone → SO101)** preview GIFs are in [`Visualization/`](./Visualization/). More clips (simulation, LeRobot vis, etc.) are on the [live site](https://joeland4.github.io/EasyUMI-Ego/).
 
 <p align="center"><strong>UMI → SO101</strong></p>
 
-<table align="center" style="width:100%;max-width:720px;table-layout:fixed;border-collapse:separate;border-spacing:10px;">
-  <tr>
-    <td style="width:33.33%;vertical-align:top;text-align:center;padding:0;">
-      <sub><b>Acquisition</b></sub><br/><br/>
-      <img src="./Visualization/UMIdevice.gif" alt="UMI acquisition" style="width:100%;height:200px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
-    </td>
-    <td style="width:33.33%;vertical-align:top;text-align:center;padding:0;">
-      <sub><b>Pose / coordinates</b></sub><br/><br/>
-      <img src="./Visualization/UMIpose.gif" alt="UMI pose" style="width:100%;height:200px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
-    </td>
-    <td style="width:33.33%;vertical-align:top;text-align:center;padding:0;">
-      <sub><b>Real robot</b></sub><br/><br/>
-      <img src="./Visualization/UMIreal.gif" alt="UMI real robot" style="width:100%;height:200px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
-    </td>
-  </tr>
+<div align="center">
+<table align="center" style="width:100%;max-width:520px;margin-left:auto;margin-right:auto;border-collapse:separate;border-spacing:0 16px;">
+  <tbody>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>Acquisition</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/UMIdevice.gif" alt="UMI acquisition" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>Pose / coordinates</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/UMIpose.gif" alt="UMI pose" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>Real robot</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/UMIreal.gif" alt="UMI real robot" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+  </tbody>
 </table>
+</div>
+
+<p align="center"><strong>Ego → SO101</strong></p>
+
+<div align="center">
+<table align="center" style="width:100%;max-width:520px;margin-left:auto;margin-right:auto;border-collapse:separate;border-spacing:0 16px;">
+  <tbody>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>Acquisition</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/EGOdevice.gif" alt="Ego acquisition" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>Pose / coordinates</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/EGOpose.gif" alt="Ego pose" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding:0;text-align:center;">
+        <p align="center" style="margin:0;"><sub><b>Real robot</b></sub></p>
+        <p align="center" style="margin:12px 0 0 0;max-width:520px;margin-left:auto;margin-right:auto;">
+          <img src="./Visualization/EGOreal.gif" alt="Ego real robot" style="width:100%;height:220px;object-fit:cover;object-position:center;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 ---
 
