@@ -73,7 +73,7 @@ Open **ego-centric** human datasets are attractive for scale, yet **trajectory v
 
 <div align="center">
 <p align="center" style="max-width:560px;margin:12px auto 0;">
-  <img src="./Visualization/ego_opensource_trajectory_viz.png" alt="Trajectory visualization of an open ego dataset" style="width:100%;max-width:560px;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
+  <img src="./Visualization/EGO_sample.png" alt="Trajectory visualization of an open ego dataset" style="width:100%;max-width:560px;display:block;border-radius:8px;border:1px solid #e0e0e0;box-sizing:border-box;"/>
 </p>
 </div>
 
