@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EasyUMI-Ego | Heterogeneous Alignment UMI Data Collection</title>
-  <meta name="description" content="EasyUMI-Ego: Heterogeneous alignment UMI data collection with two mapping pipelines to SOARM-101 embodiment." />
+  <title>EasyUMI-Ego | Heterogeneous Mapping + IK to SO101</title>
+  <meta name="description" content="EasyUMI-Ego contributes two heterogeneous mapping + IK pipelines that make UMI gripper data and Ego hand video data executable on SO101 for regular users." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -277,6 +277,31 @@
       max-width: 980px;
     }
 
+    .focus-note {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      font-weight: 600;
+    }
+
+    .focus-note.problem {
+      background: #fff6e7;
+      border-color: #ecd2a8;
+      color: #6d4700;
+    }
+
+    .focus-note.contribution {
+      background: #eaf6ef;
+      border-color: #b8dcc7;
+      color: #0f5f35;
+    }
+
+    .focus-label {
+      font-weight: 800;
+      margin-right: 6px;
+    }
+
     .grid {
       padding: 16px;
       display: grid;
@@ -373,7 +398,6 @@
     <header class="topbar">
       <div class="brand">
         <div class="logo">EasyUMI-Ego</div>
-        <div class="subtitle" data-i18n="subtitle">Heterogeneous Alignment UMI Data Collection</div>
       </div>
       <div class="top-actions">
         <a class="github-link" href="https://github.com/Joeland4/EasyUMI-Ego" target="_blank" rel="noreferrer">GitHub</a>
@@ -386,8 +410,7 @@
     </header>
 
     <section class="hero">
-      <h1 data-i18n="heroTitle">EasyUMI-Ego: Heterogeneous Alignment UMI Data Collection</h1>
-      <p data-i18n="heroDesc">This project focuses on heterogeneous mapping and data collection. We present two mapping pipelines from human hand motion to the SOARM-101 embodiment, including data acquisition setup, precise pose estimation, coordinate transformation, simulation replay, real robot execution, and LeRobot visualization GIFs.</p>
+      <h1 data-i18n="heroTitle">让普通机械臂也能用上 UMI 和 Ego 采集。</h1>
       <div class="meta">
         <div class="pill" data-i18n="tag1">Target Platform: Embodiment SOARM-101</div>
         <div class="pill" data-i18n="tag2">Acquisition: UMI Gripper / iPhone Pro</div>
@@ -397,7 +420,9 @@
 
     <section class="mapping">
       <div class="mapping-head">
-        <h2 data-i18n="map1Title">Mapping Type A: UMI Gripper + iPhone Pro to SO101</h2>
+        <h2 data-i18n="map1Title">UMI Gripper + iPhone Pro → SO101</h2>
+        <p class="focus-note problem"><span class="focus-label" data-i18n="labelProblem">Problem:</span><span data-i18n="map1Problem">Most existing UMI methods are isomorphic between operator and collector. For regular users, the common setup is the SO101 arm, while isomorphic UMI grippers are too large for SO101 and cannot be directly adapted.</span></p>
+        <p class="focus-note contribution"><span class="focus-label" data-i18n="labelContribution">Project Contribution:</span><span data-i18n="map1Contribution">We build a heterogeneous mapping pipeline so pose data collected from UMI can be accurately mapped and solved with inverse kinematics (IK) on SO101, enabling regular users to benefit from efficient UMI data collection.</span></p>
         <p data-i18n="map1Desc">Data captured by the UMI gripper and iPhone Pro is heterogeneously aligned and mapped into the SO101 robot arm motion chain.</p>
       </div>
       <div class="grid">
@@ -436,7 +461,9 @@
 
     <section class="mapping">
       <div class="mapping-head">
-        <h2 data-i18n="map2Title">Mapping Type B: Chest-Mounted iPhone Pro Hand Video to SO101</h2>
+        <h2 data-i18n="map2Title">Ego Hand Video (Chest-Mounted iPhone Pro) → SO101</h2>
+        <p class="focus-note problem"><span class="focus-label" data-i18n="labelProblem">Problem:</span><span data-i18n="map2Problem">Ego data is increasingly popular in embodied AI, but pure 2D ego videos are mainly suitable for pretraining front-end video models and make it difficult to obtain high-quality hand pose data.</span></p>
+        <p class="focus-note contribution"><span class="focus-label" data-i18n="labelContribution">Project Contribution:</span><span data-i18n="map2Contribution">We integrate an Ego data acquisition pipeline with precise hand-pose mapping, and can also map and solve IK to SO101 with good accuracy, so regular users can also leverage trending Ego data workflows.</span></p>
         <p data-i18n="map2Desc">Hand videos from a chest-mounted iPhone Pro are processed with hand keypoint detection, then transformed through pose and coordinate computations to drive SO101.</p>
       </div>
       <div class="grid">
@@ -491,15 +518,21 @@
   <script>
     const i18n = {
       zh: {
-        subtitle: "异构对齐 UMI 数采",
-        heroTitle: "EasyUMI-Ego：异构对齐 UMI 数采项目",
-        heroDesc: "本项目聚焦异构映射与数据采集。我们展示两类从人手动作到 SO101 机械臂动作的映射流程，覆盖采集设备、位姿估计、坐标变换、仿真验证、真机验证以及 LeRobot 可视化视频结果。",
+        subtitle: "两条异构映射 + IK 到 SO101 的方案",
+        heroTitle: "让普通机械臂也能用上 UMI 和 Ego 采集。",
+        heroDesc: "核心贡献：1）针对同构 UMI 夹抓与 SO101 不适配的问题，我们提出 UMI 数据到 SO101 的异构映射 + 逆动力学（IK）方案。2）针对纯 2D Ego 视频难以获得高质量手部位姿的问题，我们整合 Ego 手部视频采集与精确手部位姿映射流程，并同样映射 + IK 到 SO101。最终让普通玩家也能在低成本 SO101 上落地高效 UMI/Ego 数采流程。",
         tag1: "目标平台：本体设备 SOARM-101",
         tag2: "采集设备：UMI 夹抓 / iPhone Pro",
         tag3: "输出：高精度位姿与映射视频",
-        map1Title: "映射类型 A：UMI 夹抓 + iPhone Pro 到 SO101",
+        labelProblem: "问题：",
+        labelContribution: "项目贡献：",
+        map1Title: "UMI 夹抓 + iPhone Pro → SO101",
+        map1Problem: "现有的 UMI 方法多为本体与采集器同构。对于普通玩家而言，大多使用 SO101 普通机械臂，而同构的 UMI 夹抓对 SO101 来说过大且无法直接适配。",
+        map1Contribution: "我们做了一个异构映射，让从 UMI 采集到的位姿数据能够准确映射并通过逆动力学（IK）到 SO101 机械臂上，让普通玩家也能体验 UMI 带来的高效数采。",
         map1Desc: "通过 UMI 夹抓与 iPhone Pro 获取操作数据，进行异构对齐后，将动作和位姿信息映射到 SO101 机械臂执行链路。",
-        map2Title: "映射类型 B：胸口支架 iPhone Pro 手部视频到 SO101",
+        map2Title: "Ego 手部视频（胸口 iPhone Pro） → SO101",
+        map2Problem: "Ego 数据在具身领域愈发火热，但纯 2D 视频的 Ego 数据仅适合用于前置视频模型预训练，难以获取高质量的手部位姿数据。",
+        map2Contribution: "我们整合了一个 Ego 数据采集方案和手部位姿精确映射流程，同样能够较精准地映射并逆动力学到 SO101 机械臂上，让普通玩家也能体验当下火热的 Ego 数据。",
         map2Desc: "胸口相机支架上的 iPhone Pro 采集手部视频，先进行手部关键点识别，再通过一系列位姿和坐标计算映射到 SO101 机械臂。",
         a1: "数据采集设备与介绍",
         a2: "位姿展示（含坐标系转换）",
@@ -521,15 +554,21 @@
         footerRight: "支持中英文切换，可直接用于 GitHub Pages"
       },
       en: {
-        subtitle: "Heterogeneous Alignment UMI Data Collection",
-        heroTitle: "EasyUMI-Ego: Heterogeneous Alignment UMI Data Collection",
-        heroDesc: "This project focuses on heterogeneous mapping and data collection. We present two mapping pipelines from human hand motion to the SOARM-101 embodiment, including data acquisition setup, precise pose estimation, coordinate transformation, simulation replay, real robot execution, and LeRobot visualization GIFs.",
+        subtitle: "Two Heterogeneous Mapping + IK Pipelines to SO101",
+        heroTitle: "Bring UMI and Ego data collection to everyday robot arms.",
+        heroDesc: "Core contributions: (1) We solve the mismatch between isomorphic UMI grippers and the SO101 arm by building a heterogeneous mapping + IK pipeline from UMI data to SO101. (2) We provide an Ego hand-video acquisition and precise hand-pose mapping pipeline, and also map it to SO101 with IK. This enables regular users to run efficient UMI/Ego data workflows on affordable SO101 hardware.",
         tag1: "Target Platform: Embodiment SOARM-101",
         tag2: "Acquisition: UMI Gripper / iPhone Pro",
         tag3: "Output: Accurate Pose and Mapping Videos",
-        map1Title: "Mapping Type A: UMI Gripper + iPhone Pro to SO101",
+        labelProblem: "Problem:",
+        labelContribution: "Project Contribution:",
+        map1Title: "UMI Gripper + iPhone Pro → SO101",
+        map1Problem: "Most existing UMI methods are isomorphic between the embodiment and collector. For regular users, SO101 is the common robot arm, while isomorphic UMI grippers are too large for SO101 and cannot be directly adapted.",
+        map1Contribution: "We build a heterogeneous mapping pipeline so pose data collected from UMI can be accurately mapped and solved with inverse kinematics (IK) on SO101, allowing regular users to enjoy efficient UMI data collection.",
         map1Desc: "Data captured by the UMI gripper and iPhone Pro is heterogeneously aligned and mapped into the SO101 robot arm motion chain.",
-        map2Title: "Mapping Type B: Chest-Mounted iPhone Pro Hand Video to SO101",
+        map2Title: "Ego Hand Video (Chest-Mounted iPhone Pro) → SO101",
+        map2Problem: "Ego data is increasingly popular in embodied AI, but pure 2D Ego videos are mainly suitable for pretraining front-end video models and make it difficult to obtain high-quality hand pose data.",
+        map2Contribution: "We integrate an Ego data acquisition pipeline with precise hand-pose mapping, and can also map and solve IK to SO101 with good accuracy, so regular users can also experience current hot Ego data workflows.",
         map2Desc: "Hand videos from a chest-mounted iPhone Pro are processed with hand keypoint detection, then transformed through pose and coordinate computations to drive SO101.",
         a1: "Data Acquisition Device and Overview",
         a2: "Pose Visualization (with Coordinate Transform)",
